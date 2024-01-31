@@ -1,0 +1,22 @@
+[
+    {
+        "doctype": "Custom Field",
+        "dt": "Item Price",
+        "module": "Custom Kanak",
+        "name": "Min Rate",
+        "fieldname": "min_rate",
+        "fieldtype": "Float",
+        "label": "Min Rate",
+        "insert_after": "price_list_rate"
+    },
+    {
+        "doctype": "Custom Field",
+        "dt": "Item Price",
+        "module": "Custom Kanak",
+        "name": "Max Rate",
+        "fieldname": "max_rate",
+        "fieldtype": "Float",
+        "label": "Max Rate",
+        "insert_after": "min_rate"
+    }
+]
