@@ -7,7 +7,12 @@ frappe.ui.form.on('Purchase Order Item', {
                 'items':frm.doc.items
             },
             callback: (r) => {
-                if (!r.exc) frm.refresh_fields();
+                if (r._server_messages){
+                    frm.fields_dict.items.grid.toggle_enable('rate', 1); 
+                }
+                else{
+                    frm.fields_dict.items.grid.toggle_enable('rate', 0);
+                }
             },
         });
     }
