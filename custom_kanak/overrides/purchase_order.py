@@ -19,7 +19,11 @@ class CustomPurchaseOrder(PurchaseOrder):
                 item_price = frappe.get_doc("Item Price", prices[0].get("name"))
                 if item_price.min_rate > 0 and item_price.max_rate > 0:
                     if line.get("rate") < item_price.min_rate or line.get("rate") > item_price.max_rate:
-                        frappe.throw(_("For {0} price range should be in between {1} To {2}").format(line.get("item_code"),item_price.min_rate,item_price.max_rate))
+                        msg = _("For {0} price range should be in between {1} To {2}").format(line.get("item_code"),item_price.min_rate,item_price.max_rate)
+                        if "Purchase Manager" not in frappe.get_roles(frappe.session.user):
+                            frappe.msgprint(msg, alert=True, indicator="red", title=_("Warning!"))
+                        else:
+                            frappe.msgprint(msg, alert=True, indicator="orange", title=_("Warning!"))
 
     def on_update(self):
         super(CustomPurchaseOrder, self).on_update()
@@ -35,5 +39,9 @@ class CustomPurchaseOrder(PurchaseOrder):
                 item_price = frappe.get_doc("Item Price", prices[0].get("name"))
                 if item_price.min_rate > 0 and item_price.max_rate > 0:
                     if line.rate < item_price.min_rate or line.rate > item_price.max_rate:
-                        frappe.throw(_("For {0} price range should be in between {1} To {2}").format(line.item_code,item_price.min_rate,item_price.max_rate))
+                        msg = _("For {0} price range should be in between {1} To {2}").format(line.get("item_code"),item_price.min_rate,item_price.max_rate)
+                        if "Purchase Manager" not in frappe.get_roles(frappe.session.user):
+                            frappe.throw(msg)
+                        else:
+                            frappe.msgprint(msg, alert=True, indicator="orange", title=_("Warning!"))
 
