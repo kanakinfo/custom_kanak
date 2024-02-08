@@ -156,7 +156,7 @@ override_doctype_class = {
 # ------------------------------
 #
 # override_whitelisted_methods = {
-#	"frappe.desk.doctype.event.event.get_events": "custom_kanak.event.get_events"
+# 	"erpnext.controllers.queries.item_query": "custom_kanak.custom_kanak.queries.item_query"
 # }
 #
 # each overriding function accepts a `data` argument;

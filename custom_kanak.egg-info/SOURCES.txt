@@ -16,5 +16,9 @@ custom_kanak/config/__init__.py
 custom_kanak/config/desktop.py
 custom_kanak/config/docs.py
 custom_kanak/custom_kanak/__init__.py
+custom_kanak/fixtures/custom_field.json
+custom_kanak/overrides/purchase_order.py
+custom_kanak/public/js/purchase_order.js
 custom_kanak/templates/__init__.py
 custom_kanak/templates/pages/__init__.py
+custom_kanak/www/__init__.py
