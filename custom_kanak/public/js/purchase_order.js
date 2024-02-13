@@ -1,78 +1,78 @@
 frappe.provide("frappe.messages");
 frappe.provide("erpnext.buying");
-frappe.show_alert = frappe.toast = function (message, seconds = 7, actions = {}) {
-    let indicator_icon_map = {
-        orange: "solid-warning",
-        yellow: "solid-warning",
-        blue: "solid-info",
-        green: "solid-success",
-        red: "solid-error",
-        rederrorcustomcl: "solid-error",
-        orangeerrorcustom_cl: "solid-warning",
-    };
+// frappe.show_alert = frappe.toast = function (message, seconds = 7, actions = {}) {
+//     let indicator_icon_map = {
+//         orange: "solid-warning",
+//         yellow: "solid-warning",
+//         blue: "solid-info",
+//         green: "solid-success",
+//         red: "solid-error",
+//         rederrorcustomcl: "solid-error",
+//         orangeerrorcustom_cl: "solid-warning",
+//     };
 
-    if (typeof message === "string") {
-        message = {
-            message: message,
-        };
-    }
+//     if (typeof message === "string") {
+//         message = {
+//             message: message,
+//         };
+//     }
 
-    if (!$("#dialog-container").length) {
-        $('<div id="dialog-container"><div id="alert-container"></div></div>').appendTo("body");
-    }
+//     if (!$("#dialog-container").length) {
+//         $('<div id="dialog-container"><div id="alert-container"></div></div>').appendTo("body");
+//     }
 
-    let icon;
-    if (message.indicator) {
-        icon = indicator_icon_map[message.indicator.toLowerCase()] || "solid-" + message.indicator;
-    } else {
-        icon = "solid-info";
-    }
+//     let icon;
+//     if (message.indicator) {
+//         icon = indicator_icon_map[message.indicator.toLowerCase()] || "solid-" + message.indicator;
+//     } else {
+//         icon = "solid-info";
+//     }
 
-    const indicator = message.indicator || "blue";
+//     const indicator = message.indicator || "blue";
 
-    const div = $(`
-        <div class="alert desk-alert ${indicator}" role="alert">
-            <div class="alert-message-container">
-                <div class="alert-title-container">
-                    <div>${frappe.utils.icon(icon, "lg")}</div>
-                    <div class="alert-message">${message.message}</div>
-                </div>
-                <div class="alert-subtitle">${message.subtitle || ""}</div>
-            </div>
-            <div class="alert-body" style="display: none"></div>
-            <a class="close">${frappe.utils.icon("close-alt")}</a>
-        </div>
-    `);
+//     const div = $(`
+//         <div class="alert desk-alert ${indicator}" role="alert">
+//             <div class="alert-message-container">
+//                 <div class="alert-title-container">
+//                     <div>${frappe.utils.icon(icon, "lg")}</div>
+//                     <div class="alert-message">${message.message}</div>
+//                 </div>
+//                 <div class="alert-subtitle">${message.subtitle || ""}</div>
+//             </div>
+//             <div class="alert-body" style="display: none"></div>
+//             <a class="close">${frappe.utils.icon("close-alt")}</a>
+//         </div>
+//     `);
 
-    div.hide().appendTo("#alert-container").show();
+//     div.hide().appendTo("#alert-container").show();
 
-    if (message.body) {
-        div.find(".alert-body").show().html(message.body);
-    }
+//     if (message.body) {
+//         div.find(".alert-body").show().html(message.body);
+//     }
 
-    div.find(".close, button").click(function () {
-        div.addClass("out");
-        setTimeout(() => div.remove(), 800);
-        return false;
-    });
+//     div.find(".close, button").click(function () {
+//         div.addClass("out");
+//         setTimeout(() => div.remove(), 800);
+//         return false;
+//     });
 
-    Object.keys(actions).map((key) => {
-        div.find(`[data-action=${key}]`).on("click", actions[key]);
-    });
+//     Object.keys(actions).map((key) => {
+//         div.find(`[data-action=${key}]`).on("click", actions[key]);
+//     });
 
-    if (seconds > 2) {
-        // Delay for animation
-        seconds = seconds - 0.8;
-    }
+//     if (seconds > 2) {
+//         // Delay for animation
+//         seconds = seconds - 0.8;
+//     }
 
-    setTimeout(() => {
-        div.addClass("out");
-        setTimeout(() => div.remove(), 800);
-        return false;
-    }, seconds * 1000);
+//     setTimeout(() => {
+//         div.addClass("out");
+//         setTimeout(() => div.remove(), 800);
+//         return false;
+//     }, seconds * 1000);
 
-    return div;
-};
+//     return div;
+// };
 // var super_setup_queries = erpnext.buying.BuyingController.prototype.setup_queries;
 
 // // Override the setup_queries method
