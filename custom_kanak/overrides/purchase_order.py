@@ -24,8 +24,8 @@ class CustomPurchaseOrder(PurchaseOrder):
                     else:
                         frappe.msgprint(msg, alert=True, indicator="orangeerrorcustom_cl", title=_("Warning!"))
 
-    def on_update(self):
-        super(CustomPurchaseOrder, self).on_update()
+    def validate(self):
+        super(CustomPurchaseOrder, self).on_submit()
         for line in self.items:
             prices = frappe.get_all(
                 "Item Price",
